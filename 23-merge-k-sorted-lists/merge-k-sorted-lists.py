@@ -9,51 +9,38 @@ class Solution(object):
         :type lists: List[ListNode]
         :rtype: ListNode
         """
-
         n=len(lists)
-        if lists==[]:
-            return
-
-        n=len(lists)
-        i=1
-        while i<n:
-            if not lists[i]:
-                i+=1
-                continue
-            if not lists[0]:
-                lists[0]=lists[i]
-                i+=1
-                if i==n:
-                    return lists[0]
-                if not lists[i]:
-                    continue
-            if not lists[0]:
-                return
-
-            if lists[0].val>lists[i].val:
-                t=lists[0]
-                v=lists[i].next
-                lists[0]=lists[i]
-                lists[i]=v
-                lists[0].next=t
-
-            x=lists[0]
-            temp=lists[i]    
-            
-            while temp and x.next:
-                y=temp
-                
-                if y.val<x.next.val:
-                    t=x.next
-                    x.next=y
-                    temp=temp.next
-                    y.next=t
-                x=x.next
-    
-            if temp:
-                x.next=temp
-            i+=1
-
-    
-
+        if not lists or n==0:
+            return 
+        elif n==1:
+            return lists[0]
+        while len(lists)>1:
+            mergeList=[]
+            for i in range(0,len(lists),2):
+                l1=lists[i]
+                l2=lists[i+1] if (i+1)<len(lists) else None
+                mergeList.append(self.merge(l1,l2)) 
+            lists=mergeList
         return lists[0]
+
+    def merge(self,l1,l2):
+        dummy=ListNode()
+        tail=dummy
+        x=l1
+        y=l2
+        while x and y:
+            if x.val<y.val:
+                t=x.next
+                tail.next=x
+                x=t
+                tail=tail.next
+            else:
+                t=y.next
+                tail.next=y
+                y=t
+                tail=tail.next
+        if x:
+            tail.next=x
+        elif y:
+            tail.next=y
+        return dummy.next
