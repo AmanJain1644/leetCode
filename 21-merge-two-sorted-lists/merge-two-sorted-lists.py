@@ -10,32 +10,24 @@ class Solution(object):
         :type list2: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        if not list1 and not list2:
-            return
-        elif not list1:
-            return list2
-        elif not list2:
-            return list1
-        if list2.val<list1.val:
-            t=list1
-            v=list2.next
-            list1=list2
-            list1.next=t
-            list2=v
-
+        dummy=ListNode()
+        tail=dummy
         x=list1
         y=list2
-        while y and x.next:
-            temp=y
-            if temp.val<x.next.val:
+        while x and y:
+            if x.val<y.val:
                 t=x.next
-                x.next=temp
-                y=y.next
-                temp.next=t
-            x=x.next
-        
-        if y:
-            x.next=y
-        return list1
-
+                tail.next=x
+                x=t
+                tail=tail.next
+            else:
+                t=y.next
+                tail.next=y
+                y=t
+                tail=tail.next
+        if x:
+            tail.next=x
+        elif y:
+            tail.next=y
+        return dummy.next
         
