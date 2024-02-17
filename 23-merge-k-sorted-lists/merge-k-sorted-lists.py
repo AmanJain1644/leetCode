@@ -27,6 +27,8 @@ class Solution(object):
                     return lists[0]
                 if not lists[i]:
                     continue
+            if not lists[0]:
+                return
 
             if lists[0].val>lists[i].val:
                 t=lists[0]
