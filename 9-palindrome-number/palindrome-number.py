@@ -4,16 +4,11 @@ class Solution(object):
         :type x: int
         :rtype: bool
         """
-        if x==0:
-            return True
-            
-        if x<0 or not x%10:
-            return False
-        if x==0:
-            return True
-
         if x>=0 and x<=9:
             return True
+
+        elif x<0 or not x%10:
+            return False
         num=[]
         while x:
             num.append(x%10)
