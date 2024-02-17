@@ -4,19 +4,17 @@ class Solution(object):
         :type x: int
         :rtype: bool
         """
-        if x>=0 and x<=9:
-            return True
-
-        elif x<0 or not x%10:
+        if x<0:
             return False
-        num=[]
+        elif x>=0 and x<=9:
+            return True
+        elif not x%10:
+            return False
+        rev=0
+        num=x
         while x:
-            num.append(x%10)
+            rev*=10
+            rev+=x%10
             x//=10
-        n=len(num)
-        for i in range((n//2)+1):
-            if not num[i]==num[n-i-1]:
-                return False
-        return True
-        
+        return rev==num
         
