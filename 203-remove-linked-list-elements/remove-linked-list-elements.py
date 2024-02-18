@@ -10,19 +10,16 @@ class Solution(object):
         :type val: int
         :rtype: ListNode
         """
-        if not head:
-            return
+        dummy=ListNode()
+        tail=dummy
         x=head
-        while x.next:
-
-            if x.next.val==val:
-                t=x.next
-                x.next=t.next
-                t.next=None   
-            else: 
+        while x:
+            if x.val==val:
                 x=x.next
-        if head.val==val:
-            head=head.next
-
-        return head
-    
+            else:
+                t=x.next
+                tail.next=x
+                x.next=None
+                tail=tail.next
+                x=t
+        return dummy.next
