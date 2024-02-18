@@ -25,7 +25,7 @@ class Solution(object):
         left=head
         right=prev
         while right:
-            if not left.val == right.val:
+            if  left.val != right.val:
                 return False
             left=left.next
             right=right.next
