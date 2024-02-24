@@ -4,11 +4,19 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
-        if x==0:
-            return 0
-        elif x==1:
-            return 1
-        i=1
-        while i*i<=x:
-            i+=1
-        return i-1
+        if x==0 or x==1:
+            return x
+        start=0
+        end=x
+        while start<=end:
+            mid=start+(end-start)//2
+            if mid*mid>x:
+                 end=mid-1
+            elif mid*mid<x:
+                start=mid+1
+                res=mid
+            else:
+                return mid
+        return res
+
+        
