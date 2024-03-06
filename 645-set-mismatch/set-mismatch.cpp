@@ -1,26 +1,31 @@
 class Solution {
 public:
     vector<int> findErrorNums(vector<int>& nums) {
-        vector<int> arr(2,0);
+        // sorting logic 
+        vector<int>ans(2,0);
         int n=nums.size();
-        int org;
-        for(int i=0;i<n;i++){
-            if(nums[abs(nums[i])-1]<0){
-                arr[0]=abs(nums[i]);
+        int i=0;
+        while(i<n){
+            int indx=nums[i]-1;
+            if(nums[i]!=nums[indx]){
+                swap(nums[i],nums[indx]);
             }else{
-                nums[abs(nums[i])-1]*=-1;
+                i++;
             }
         }
         for(int i=0;i<n;i++){
-            if(nums[i]>0){
-                arr[1]=i+1;
+            cout<<nums[i]<<" ";
+        }
+        cout<<endl;
+        for(int i=0;i<n;i++){
+            if(nums[i]!=i+1){
+                ans[0]=nums[i];
+                ans[1]=i+1;
                 break;
             }
         }
-        return arr;
+        return ans;
         
-
-
         
     }
 };
