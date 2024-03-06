@@ -14,10 +14,6 @@ public:
             }
         }
         for(int i=0;i<n;i++){
-            cout<<nums[i]<<" ";
-        }
-        cout<<endl;
-        for(int i=0;i<n;i++){
             if(nums[i]!=i+1){
                 ans[0]=nums[i];
                 ans[1]=i+1;
