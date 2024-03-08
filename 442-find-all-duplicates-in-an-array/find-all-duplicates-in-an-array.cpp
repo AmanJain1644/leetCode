@@ -2,17 +2,22 @@ class Solution {
 public:
     vector<int> findDuplicates(vector<int>& nums) {
         vector<int>ans;
-        unordered_map<int,int>hash;
         int n=nums.size();
+        int max=INT_MIN;
         for(int i=0;i<n;i++){
-            hash[nums[i]]++;
+            if(max<nums[i]){
+                max=nums[i];
+            }
         }
-        
+        vector<int>arr(max+1,0);
         for(int i=0;i<n;i++){
-            cout<<hash[nums[i]]<<" ";
-            if(hash[nums[i]]>1){
-                ans.push_back(nums[i]);
-                hash[nums[i]]=0;
+            arr[nums[i]]++;
+        }
+    
+        for(int i=0;i<max+1;i++){
+            cout<<arr[i]<<" ";
+            if(arr[i]>1){
+                ans.push_back(i);
             }
         }
         return ans;
