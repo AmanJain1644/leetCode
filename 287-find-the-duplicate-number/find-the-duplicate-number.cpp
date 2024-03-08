@@ -1,15 +1,11 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
-        unordered_map<int ,int>hash;
-        for(auto value:nums){
-            hash[value]++;
+        while( nums[0]!=nums[nums[0]] ){
+            swap(nums[0],nums[nums[0]]);
         }
-        for(auto value:nums){
-            if(hash[value]>1){
-                return value;
-            }
-        }
-        return -1;
+        return nums[0];
+
+        
     }
 };
