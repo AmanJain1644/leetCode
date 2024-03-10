@@ -1,30 +1,18 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        unordered_map<int,int>hash;
-        vector<int>ans;
+        int ans=1;
         int n=nums.size();
-        int k=0;
-        for(int i=0;i<n;i++){
-            hash[nums[i]]++;
-        }
-        for(auto value:nums){
-            if(hash[value]>1){
-                ans.push_back(value);
-                k++;
-                hash[value]=-1;
-            }else if(hash[value]!=-1){
-                ans.push_back(value);
-                k++;
-            }
-        } 
+        int j=1;
         int i=0;
-        for(auto value:ans){            
-            nums[i]=value;
-            i++;
-
+        while(j<n){
+            if(nums[i]!=nums[j]){
+                nums[i+1]=nums[j];
+                i++;
+                ans++;
+            }
+            j++;
         }
-        return k;
-
+        return ans;
     }
 };
