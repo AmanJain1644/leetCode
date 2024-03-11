@@ -12,7 +12,6 @@ public:
     
             if(sum>=target){
                 minn=min(minn,(j-i+1));
-                cout<<sum<<minn<<j<<i;
                 sum-=nums[i];
                 i++;
                 flag=0;
