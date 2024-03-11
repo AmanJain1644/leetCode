@@ -4,8 +4,7 @@ public:
         int maxProfit=0;
         int n=prices.size();
         int i=0;
-        int j=1;
-        while(j<n){
+        for(int j=0;j<n;j++){
             if(prices[i]<prices[j]){
                 int profit=prices[j]-prices[i];
                 if(maxProfit<profit){
@@ -14,7 +13,6 @@ public:
             }else{
                     i=j;
                 }
-            j++;
         }
         return maxProfit;
         
