@@ -10,9 +10,10 @@ public:
                 if(maxProfit<profit){
                     maxProfit=profit;
                 }
-            }else{
-                    i=j;
-                }
+            }
+            else{
+                i=j;
+            }
         }
         return maxProfit;
         
