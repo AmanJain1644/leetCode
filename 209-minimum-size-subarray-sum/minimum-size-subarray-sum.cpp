@@ -2,7 +2,7 @@ class Solution {
 public:
     int minSubArrayLen(int target, vector<int>& nums) {
         int n=nums.size();
-        int minn=INT_MAX;
+        int minn=n+1;
         if (nums[0]==target) return 1;        
         int j=0;
         int i=0;
