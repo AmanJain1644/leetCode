@@ -1,7 +1,6 @@
 class Solution {
 public:
     string removeStars(string s) {
-        string str="";
         stack<int>stack;
         for(auto val:s){
             if(val=='*' && !stack.empty()){
@@ -9,18 +8,20 @@ public:
             }else{
                 stack.push(val);
             }
-        } 
+        }
+        s.clear();
+        s="";
         while(!stack.empty()){
-            str+=stack.top();
+            s+=stack.top();
             stack.pop();
         } 
-        int n=str.size();
+        int n=s.size();
         int i=0;
         while(i<n/2){
-            swap(str[i],str[n-i-1]);
+            swap(s[i],s[n-i-1]);
             i++;
         }
-        return str;
+        return s;
 
     }
 };
