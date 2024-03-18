@@ -4,12 +4,12 @@ public:
         int count=1;
         sort(points.begin(),points.end());  
         int check=points[0][1];
-        for(auto val:points){
-            if(check<val[0]){
+        for(int i=1;i<points.size();i++){
+            if(check<points[i][0]){
                 count++;
-                check=val[1];
+                check=points[i][1];
             }else{
-                check=min(check,val[1]);
+                check=min(check,points[i][1]);
             }
             
         }
