@@ -1,24 +1,29 @@
 class Solution {
 public:
-    double myPow(double x,long n) {
+    double myPow(double x,int n) {
         if(n==0) return 1;
-        if(n==1) return x;        
-        
+        if(n==1) return x;
         int flag=0;
+        double result=1;
         if(n<0){
-            n*=-1;
             flag=1;
+            if(n==INT_MIN){
+                n++;
+                result*=x;
+            }
+            n*=-1;
         }
-        if(n&1){
-            double ans = myPow(x*x,n/2)*x;
-            if(flag)return 1/ans;
-            else return ans;
+        while(n>0){
+            if(n&1){
+                result*=x;
+                n--;
+            }else{                
+                x*=x;
+                n/=2;
+            }
         }
-        else {
-            double ans = myPow(x*x,n/2);
-            if(flag)return 1/ans;
-            else return ans;
-        }
+
+        return flag?1/result:result;
         
         
     }
