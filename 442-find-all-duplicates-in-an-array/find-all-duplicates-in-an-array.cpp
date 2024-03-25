@@ -3,15 +3,15 @@ public:
     vector<int> findDuplicates(vector<int>& nums) {
         vector<int>ans;
         int n=nums.size();
-        vector<int>arr(n+1,0);
+        unordered_map<int,int>hash;
         for(int i=0;i<n;i++){
-            arr[nums[i]]++;
+            hash[nums[i]]++;
         }
     
-        for(int i=0;i<n+1;i++){
-            cout<<arr[i]<<" ";
-            if(arr[i]>1){
-                ans.push_back(i);
+        for(int i=0;i<n;i++){
+            if(hash[nums[i]]>1){
+                ans.push_back(nums[i]);
+                hash[nums[i]]=0;
             }
         }
         return ans;
