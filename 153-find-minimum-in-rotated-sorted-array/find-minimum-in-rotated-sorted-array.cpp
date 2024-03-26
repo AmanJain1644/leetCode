@@ -9,14 +9,11 @@ public:
             return nums[0];
         }
         while(st<=ed){
-            if(ans>nums[mid]){
-                ans = nums[mid];
-            }
-            if(nums[st]<nums[mid]){
+            if(nums[st]<=nums[mid]){
                 ans = min(ans,nums[st]);
                 st = mid +1;
             }else{
-                ans = min(ans,nums[ed]);
+                ans = min(ans,nums[mid]);
                 ed=mid-1;
             }
             mid = st + (ed-st)/2;
