@@ -5,11 +5,6 @@ public:
         int st = 0;
         int ed = n-1;
         vector<int>ans(2,-1);
-        if(n==1 && nums[0]==target){
-            ans[0]=0;
-            ans[1]=0;
-            return ans;
-        }
         while(st<=ed){
             int mid = st+(ed-st)/2;
             if(nums[mid]==target){
