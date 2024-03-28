@@ -1,17 +1,21 @@
+
+
 class Solution {
-    public int  mySqrt(int x) {
-        if(x==0 || x==1){
-            return x;
-        }
-        long i=1;
-        while(i*i<=x){
-            i++;
-        }
-        int ans=(int)(i-1);
-        return ans;
-       
+    public int mySqrt(int x) {
+        int st =1;
+        int ed =x;
+        int mid = st+(ed-st)/2;      
 
-
-        
+        while(st<=ed){
+            if(mid == x/mid){
+                return mid;
+            }else if(mid>x/mid){
+                ed=mid-1;                
+            }else{
+                st=mid+1;
+            }
+            mid = st+(ed-st)/2;
+        }  
+        return ed;      
     }
 }
