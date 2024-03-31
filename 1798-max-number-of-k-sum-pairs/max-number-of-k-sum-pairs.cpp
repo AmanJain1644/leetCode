@@ -3,17 +3,21 @@ public:
     int maxOperations(vector<int>& nums, int k) {
         int n = nums.size();
         int count = 0;
-        unordered_map<int,int>hash;
-        for(int i=0;i<n;i++){
-            if(hash[k-nums[i]]>0){
+        int i=0,j=n-1;
+        sort(nums.begin(),nums.end());
+        while(i<j){
+            int sum = nums[i]+nums[j];
+            if(sum==k){
                 count++;
-                hash[k-nums[i]]--;
-
+                i++;
+                j--;
+            }
+            else if(sum>k){
+                j--;
             }else{
-                hash[nums[i]]++;
+                i++;
             }
         }
         return count;
-        
     }
 };
