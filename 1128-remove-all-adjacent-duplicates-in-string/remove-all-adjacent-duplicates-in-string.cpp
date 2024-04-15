@@ -14,9 +14,10 @@ public:
         } 
 
         while(!st.empty()){
-            ans.insert(ans.begin(),st.top());
+            ans.push_back(st.top());
             st.pop();
         }  
-        return ans;     
+        string result(ans.rbegin(),ans.rend());
+        return result;     
     }
 };
