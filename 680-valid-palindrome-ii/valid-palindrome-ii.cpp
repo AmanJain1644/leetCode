@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    bool checkPalindrome(int i,int j,string s){
+    bool checkPalindrome(int i,int j,string &s){
         while(i<=j){
             if(s[i]!=s[j]){
                 return false;
