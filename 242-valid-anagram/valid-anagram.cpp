@@ -5,20 +5,21 @@ public:
         if(s.length()!=t.length()){
             return false;
         }
-        unordered_map<char,int>hashs;
-        unordered_map<char,int>hasht;
-        for(char val : s){
-            hashs[val]++;
-        }
-        for(char val:t){
-            hasht[val]++;
-        }
-        for(char val:t){
-            if(hashs[val]!=hasht[val]){
+       int freqTable[256];
+
+       for(int i=0;i<s.length();i++){
+            freqTable[s[i]]++;
+       }
+
+       for(int i=0;i<t.length();i++){
+            freqTable[t[i]]--;
+       }
+        
+        for(int i=0;i<256;i++){
+            if(freqTable[i]!=0){
                 return false;
             }
         }
         return true;
-        
     }
 };
