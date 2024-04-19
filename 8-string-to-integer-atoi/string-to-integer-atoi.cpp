@@ -2,6 +2,7 @@ class Solution {
 public:
     int myAtoi(string s) {
         int n = s.length();
+        if(n==0)return 0;
         int num=0,i=0,sign=1;
         while(s[i]==' '){
             i++;
