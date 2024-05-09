@@ -1,13 +1,12 @@
 class Solution {
 public:
-    static bool comp(int a,int b){
-        return a>b;
-    }
     long long maximumHappinessSum(vector<int>& happiness, int k) {
         long long sum = 0;
-        sort(happiness.begin(),happiness.end(),comp);
+        sort(happiness.begin(),happiness.end(),greater<int>());
         for(int i=0;i<k;i++){
-            sum+=(happiness[i]-i)<0?0:(happiness[i]-i);
+            if((happiness[i]-i)>0){
+                sum+=happiness[i]-i;
+            }
             
         }
         return sum;
