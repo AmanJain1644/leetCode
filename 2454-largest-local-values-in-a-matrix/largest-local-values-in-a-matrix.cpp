@@ -11,9 +11,7 @@ public:
                 int ans=INT_MIN;
                 for(int k=i;k<i+3;k++){
                     for(int l=j;l<j+3;l++){
-                        if(ans<grid[k][l]){
-                            ans=grid[k][l];
-                        }
+                        ans=max(ans,grid[k][l]);
                     }
                 }
                 gen[i][j]=ans;
