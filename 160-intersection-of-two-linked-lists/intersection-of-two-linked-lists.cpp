@@ -9,22 +9,21 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        unordered_map<ListNode*,bool>mp;
         ListNode *x = headA;
-        ListNode *y = headB;
         while(x){
-            while(y){
-                // cout<<x<<" "<<y<<endl;
-                if(x==y){
-                    
-                    return x;
-                }
-                y=y->next;
-            }
-            
+            mp[x]=true;
             x=x->next;
-            y=headB;
-        }     
-        return NULL; 
+        }
+        ListNode *y = headB;
+        while(y){
+            if(mp.find(y)!=mp.end()){
+                return y;
+            }
+            y=y->next;
+        }
+        return NULL;
+        
 
     }
 };
