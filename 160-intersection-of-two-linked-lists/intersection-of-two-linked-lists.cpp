@@ -13,16 +13,16 @@ public:
         ListNode *x = headA;
         ListNode *y = headB;
         while(x || y){
-            if(mp.find(x)!=mp.end()){
+            if(mp[x]){
                 return x;
             }else{
                 if(x){
-                    
+
                     mp[x]=true;
                     x=x->next;
                 }
             }
-            if(mp.find(y)!=mp.end()){
+            if(mp[y]){
                 return y;
             }else{
                 if(y){
