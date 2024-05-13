@@ -11,17 +11,28 @@ public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         unordered_map<ListNode*,bool>mp;
         ListNode *x = headA;
-        while(x){
-            mp[x]=true;
-            x=x->next;
-        }
         ListNode *y = headB;
-        while(y){
+        while(x || y){
+            if(mp.find(x)!=mp.end()){
+                return x;
+            }else{
+                if(x){
+                    
+                    mp[x]=true;
+                    x=x->next;
+                }
+            }
             if(mp.find(y)!=mp.end()){
                 return y;
+            }else{
+                if(y){
+
+                    mp[y]=true;
+                    y=y->next;
+                }
             }
-            y=y->next;
         }
+        
         return NULL;
         
 
