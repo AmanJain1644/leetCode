@@ -4,10 +4,12 @@ public:
         unordered_map<char,int>map;
         int n = s.size();
         int count = 0;
-        for(auto ch :s){
-            map[ch]++;
+        for(int i=0;i<n;i++){
+           
+            map[s[i]]++;
         }
-        for(auto ch :s){
+        for(int i=0;i<n;i++){
+             char ch = s[i];
             if(map[ch]%2==0){
                 count+=map[ch];
             }else{
