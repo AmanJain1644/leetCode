@@ -1,6 +1,10 @@
 class Solution {
 public:
     int robotSim(vector<int>& commands, vector<vector<int>>& obstacles) {
+
+        ios_base::sync_with_stdio(false); // Fast I/O
+        cin.tie(NULL); // Untie cin from cout
+
         vector<pair<int,int>> directions = {{0,1},{1,0},{0,-1},{-1,0}};  
 
         unordered_set<string>obstacleSet;
