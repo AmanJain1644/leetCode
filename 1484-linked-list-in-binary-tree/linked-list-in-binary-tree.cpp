@@ -22,26 +22,26 @@
 class Solution {
 public:
     bool isSubPath(ListNode* head, TreeNode* root) {
-        return dfs(head, head, root);
+        return helper(head,head,root);
     }
-    
-    bool dfs(ListNode* head, ListNode* cur, TreeNode* root) {
-        if (cur == nullptr) return true;  // Successfully matched the list
-        if (root == nullptr) return false; // Reached the end of the tree without matching
-        
-        if (cur->val == root->val) {
-            cur = cur->next;  // Move to the next list node if value matches
-        } else if (head->val == root->val) {
-            head = head->next; // Start new matching attempt if the value matches head of list
-        } else {
-            cur = head;  // Reset the matching pointer
+
+    bool helper(ListNode* head,ListNode* curr,TreeNode*root){
+        if(curr==nullptr) return true;
+        if(root==nullptr) return false;
+
+        if(curr->val==root->val){
+            curr=curr->next;
+        }else if(head->val == root->val){
+            head = head->next;
+        }else{
+            curr = head;
         }
-        
-        return dfs(head, cur, root->left) || dfs(head, cur, root->right); // Recursively check left and right subtrees
+
+        return helper(head,curr,root->left) || helper(head,curr,root->right);
     }
 };
 
-static const int crown = []() {
+static const int crown = [](){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
