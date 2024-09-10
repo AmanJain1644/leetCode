@@ -23,7 +23,7 @@ public:
         return head;       
     }
  
-    static int gcdFinder(int a,int b){
+    int gcdFinder(int a,int b){
         int result =  min(a,b);
         while(result){
             if(a%result==0 && b%result==0){
