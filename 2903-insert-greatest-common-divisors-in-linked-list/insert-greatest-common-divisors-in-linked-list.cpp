@@ -30,8 +30,6 @@ public:
                 return result;
             }
             result--;
-
-
         }
         return result;
     }
