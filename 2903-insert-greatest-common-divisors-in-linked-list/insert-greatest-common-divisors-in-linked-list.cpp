@@ -24,14 +24,12 @@ public:
     }
  
     int gcdFinder(int a,int b){
-        int result =  min(a,b);
-        while(result){
-            if(a%result==0 && b%result==0){
-                return result;
-            }
-            result--;
+        while(b!=0){
+            int temp=b;
+            b=a%b;
+            a=temp;
         }
-        return result;
+        return a;
     }
 
 };
