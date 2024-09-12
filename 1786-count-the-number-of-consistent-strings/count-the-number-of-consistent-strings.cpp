@@ -1,7 +1,7 @@
 class Solution {
 public:
     int countConsistentStrings(string allowed, vector<string>& words) {
-        unordered_map<char,bool>hash;
+        bool hash[128] = {0};
         int count = 0;
         int flag=1;
         for(char i:allowed){
