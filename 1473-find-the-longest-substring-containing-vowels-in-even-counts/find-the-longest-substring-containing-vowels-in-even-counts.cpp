@@ -4,7 +4,7 @@ public:
         unordered_map<int,int>hash;
         int maxLen=0;
         int mask=0;
-        hash[0]=-1;
+        hash[0]=-1; 
         for(int i=0;i<s.size();i++){
             char ch=s[i];
             if(ch=='a'){
@@ -27,3 +27,10 @@ public:
         return maxLen;    
     }
 };
+
+static const int crown = [](){
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    return 0;
+}();
