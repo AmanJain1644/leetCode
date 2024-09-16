@@ -1,7 +1,10 @@
 class Solution {
 public:
     int findTheLongestSubstring(string s) {
-        unordered_map<int,int>hash;
+        int hash[32];
+        for(int i=0;i<32;i++){
+            hash[i]=-2;
+        }
         int maxLen=0;
         int mask=0;
         hash[0]=-1; 
@@ -18,7 +21,7 @@ public:
             }else if(ch=='u'){
                 mask^=(1<<4);
             }
-            if(hash.find(mask)!=hash.end()){
+            if(hash[mask]!=-2){
                 maxLen = max(maxLen,i-hash[mask]);
             }else{
                 hash[mask]=i;
