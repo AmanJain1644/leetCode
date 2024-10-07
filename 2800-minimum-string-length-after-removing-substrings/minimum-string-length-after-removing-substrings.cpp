@@ -1,23 +1,20 @@
 class Solution {
 public:
     int minLength(string s) {
-        int posA = s.find("AB");
-        int posC = s.find("CD");
-        while(posA !=string::npos || posC != string::npos ){
-        
-            if(posA!=string::npos){
-                s.erase(posA,2);
-            }
-            posC = s.find("CD");
-            if(posC != string::npos){
-                s.erase(posC,2);
-            }
-            posA= s.find("AB");
-            posC = s.find("CD");
-
-        } 
-    
-
-        return s.length();              
+        stack<char>st;
+        for(char c:s){
+            if(!st.empty()){
+                if(c=='B' && st.top()=='A'){
+                    st.pop();
+                    continue;
+                }
+                else if(c=='D' && st.top()=='C'){
+                    st.pop();
+                    continue;
+                }
+            }  
+            st.push(c);          
+        }        
+        return st.size();
     }
 };
