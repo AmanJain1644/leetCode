@@ -10,7 +10,7 @@ public:
             if (c == '[') {
                 st.push(c);
             } else {
-                if(!st.empty() && st.top()=='['){
+                if(!st.empty()){
                     st.pop();
                 }else {
                     imbalanceCount++;
