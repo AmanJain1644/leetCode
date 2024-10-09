@@ -1,9 +1,7 @@
 func minSwaps(s string) int {
-    arr:= []byte{}
-    n:= len(s)
+    arr:= []rune{}
     Imbalance:=0
-    for i:=0;i<n;i++{
-        c:=s[i]
+    for _,c:=range s{
         if c=='['{
             arr=append(arr,c)
         }else if len(arr)>0{
