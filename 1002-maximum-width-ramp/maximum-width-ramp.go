@@ -12,7 +12,7 @@ func maxWidthRamp(nums []int) int {
             if ans<j-arr[len(arr)-1]{
                 ans=j-arr[len(arr)-1]
             }
-            arr=arr[:len(arr)-1]
+                arr=arr[:len(arr)-1]
         }
     }
     return ans
