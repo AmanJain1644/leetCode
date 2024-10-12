@@ -1,21 +1,17 @@
 func minGroups(intervals [][]int) int {
 
-    events:=[]struct{
+   type event struct{
         time int
         value int
-    }{}
+    }
+
+    events:= make([]event,0,2*len(intervals))
 
     for _,interval:=range intervals{
 
-        events=append(events,struct{
-            time int
-            value int
-        }{time:interval[0],value:1})
+        events=append(events,event{time:interval[0],value:1})
 
-        events=append(events,struct{
-            time int
-            value int
-        }{time:interval[1]+1,value:-1})
+        events=append(events,event{time:interval[1]+1,value:-1})
 
     }
 
