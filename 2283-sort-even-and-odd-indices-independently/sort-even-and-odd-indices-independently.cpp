@@ -5,7 +5,7 @@ public:
         priority_queue<int>odd;
         int n=nums.size();
         for(int i=0;i<n;i++){
-            if(i%2){
+            if(i&1){
                 odd.push(nums[i]);
             }else{
                 even.push(nums[i]);
@@ -13,7 +13,7 @@ public:
         }
 
         for(int i=0;i<n;i++){
-            if(i%2){
+            if(i&1){
                 nums[i]=odd.top();
                 odd.pop();
             }else{
