@@ -4,7 +4,6 @@ public:
         vector<pair<int,int>>elements;
         int rangeLeft=0,rangeRight=0;
         int range = INT_MAX;
-        cout<<range;
         int k = nums.size();
         for(int i=0;i<k;i++){
             for(int num:nums[i]){
