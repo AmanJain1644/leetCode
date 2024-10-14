@@ -9,14 +9,8 @@ public:
         while(k--){
             int top = pq.top();
             total+=top;
-            pq.pop();
-            int val = 0;
-            if(top%3){
-                val=(top/3)+1;
-            }else{
-                val = top/3;
-            }
-            pq.push(val);
+            pq.pop();            
+            pq.push(top%3==0?top/3:top/3 +1);
         }
         return total;
     }
