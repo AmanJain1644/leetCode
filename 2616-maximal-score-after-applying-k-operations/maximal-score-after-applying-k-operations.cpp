@@ -6,8 +6,7 @@ public:
         for(int num:nums){
             pq.push(num);
         }        
-        int count = k;
-        while(count--){
+        while(k--){
             int top = pq.top();
             total+=top;
             pq.pop();
