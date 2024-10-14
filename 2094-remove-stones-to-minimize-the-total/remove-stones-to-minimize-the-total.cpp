@@ -7,7 +7,6 @@ public:
         }        
         while(k--){
             int top = pq.top();
-            cout<<top/2<<endl;
             pq.pop();
             pq.push(top - top/2);
 
@@ -20,3 +19,10 @@ public:
         return total;
     }
 };
+
+int crown = [](){
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    return 0;
+}();
