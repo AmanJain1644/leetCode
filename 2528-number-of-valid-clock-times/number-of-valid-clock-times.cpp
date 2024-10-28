@@ -1,23 +1,37 @@
 class Solution {
 public:
     int countTime(string time) {
-        int count = 0;
-        for(int h=0;h<24;h++){
-            for(int m=0;m<60;m++){
-                string curr =(h<10?"0":"") + to_string(h) + ":"+ (m<10?"0":"") + to_string(m);
-                bool match = true;
-                for(int i=0;i<5;i++){
-                    if(time[i]!='?' && time[i]!=curr[i]){
-                        match=false;
-                        break;
-                    }
-                }
+        int ans = 1;
+        if(time[4]=='?'){
+            ans*=10;
+        }
 
-                if(match) count++;
+        if(time[3]=='?'){
+            ans*=6;
+        }
+
+        if(time[0]=='?'){
+            if(time[1]=='?'){
+                ans*=24;
+            }else{
+                if(time[1]<='3'){
+                    ans*=3;
+                }else{
+                    ans*=2;
+                }
             }
         }
 
-        return count;
+        else if(time[1]=='?'){
+            if(time[0]<'2'){
+                ans*=10;
+            }else{
+                ans*=4;
+            }
+        }
+
+        return ans;
 
     }
-}; 
+
+};
