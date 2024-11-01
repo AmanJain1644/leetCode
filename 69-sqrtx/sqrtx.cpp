@@ -1,10 +1,18 @@
 class Solution {
 public:
     int mySqrt(int x) {
-        long i=1;
-        while(i*i<=x){
-            i+=1;
-        }
-        return i-1;
+        int st = 1;
+        int ed = x;
+        int mid = 0;
+        while(st<=ed){
+            mid = st + (ed - st)/2;
+            if(mid==x/mid) return mid;
+            else if(mid<x/mid){
+                st=mid+1;
+            }else{
+                ed=mid-1;
+            }
+        }   
+        return ed;     
     }
 };
