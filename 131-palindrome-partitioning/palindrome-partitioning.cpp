@@ -1,34 +1,35 @@
 class Solution {
 public:
-bool isPalindrome(string s){
-    int l = 0;
-    int r = s.size() - 1;
-    while(l < r){
-        if(s[l++] != s[r--]){
-            return false;
+
+    bool Ispalindrome(string str,int l,int r){
+        while(l<r){
+            if(str[l++]!=str[r--]) return false;
         }
+
+        return true;
     }
-    return true;
-}
-void helper(string s, vector<vector<string>> &result, vector<string> temp){
-   
-    if(s.size() == 0){
-        result.push_back(temp);
-    }
-    
-    for(int i = 0; i < s.size(); i++){
-        string leftPar = s.substr(0, i + 1);
-        if(isPalindrome(leftPar)){
-            temp.push_back(leftPar);
-            helper(s.substr(i + 1), result, temp);
-            temp.pop_back();
+
+    void helper(vector<vector<string>>&ans,string s,vector<string> temp,int st){
+        if(st==s.size()){
+            ans.push_back(temp);
+            return;
         }
+
+        for(int end=st; end<s.size();end++){
+            if(Ispalindrome(s,st,end)){        
+                temp.push_back(s.substr(st,end-st+1));
+                helper(ans,s,temp,end+1);
+                temp.pop_back();
+            }
+        }        
     }
-}
-vector<vector<string>> partition(string s) {
-    vector<vector<string>> result;
-    vector<string> temp;
-    helper(s, result, temp);
-    return result;
-}
+
+    vector<vector<string>> partition(string s) {
+        int st=0;
+        vector<string>temp;
+        vector<vector<string>>ans;
+        helper(ans,s,temp,st);
+        return ans;
+
+    }
 };
