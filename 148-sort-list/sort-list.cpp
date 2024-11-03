@@ -10,50 +10,41 @@
  */
 class Solution {
 public:
-    void merge(vector<int>&nodes,int st,int mid,int ed){
-        vector<int>L(nodes.begin()+st,nodes.begin()+mid+1);
-        vector<int>R(nodes.begin()+mid+1,nodes.begin()+ed+1);
-        int i=0,j=0,k=st;
-        while(i<L.size() && j<R.size()){
-            if(L[i]<=R[j]){
-                nodes[k++]=L[i++];
+    ListNode* merge(ListNode* l1,ListNode* l2){
+        ListNode* dummy = new ListNode;
+        ListNode* tail = dummy;
+        while(l1 && l2){
+            if(l1->val<l2->val){
+                tail->next = l1;
+                l1=l1->next;
             }else{
-                nodes[k++]=R[j++];
+                tail->next = l2;
+                l2=l2->next;
             }
+                tail=tail->next;
         }
 
-        while(i<L.size()){
-            nodes[k++]=L[i++];
+        tail->next = l1?l1:l2;
+        return dummy->next;
+    }
+    ListNode* getMid(ListNode* head){
+        ListNode* slow = head;
+        ListNode* fast = head->next;
+        while(fast&&fast->next){
+            slow=slow->next;
+            fast = fast->next->next;
         }
-
-        while(j<R.size()){
-            nodes[k++]=R[j++];
-        }
+        ListNode*mid = slow->next;
+        slow->next = nullptr;
+        return mid;
 
     }
-  void divide(vector<int>&nodes,int st,int ed){
-        if(ed-st+1 <=1 ) return;
-        int mid = st+(ed-st)/2;
-        divide(nodes,st,mid);
-        divide(nodes,mid+1,ed); 
-        merge(nodes,st,mid,ed); 
-    }
-
     ListNode* sortList(ListNode* head) {
         if(!head || !head->next) return head;
-        ListNode* x = head;
-        vector<int>nodes;
-        while(x){
-            nodes.push_back(x->val);
-            x=x->next;
-        }
-        divide(nodes,0,nodes.size()-1);  
-        x=head;
-        for(auto node:nodes){
-            x->val=node;
-            x=x->next;
-        }
-        return head;
+        ListNode* mid = getMid(head);
 
+        ListNode* left  = sortList(head);
+        ListNode* right = sortList(mid);   
+        return merge(left,right);     
     }
 };
