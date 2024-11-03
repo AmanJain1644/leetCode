@@ -11,8 +11,8 @@
 class Solution {
 public:
     ListNode* merge(ListNode* l1,ListNode* l2){
-        ListNode* dummy = new ListNode;
-        ListNode* tail = dummy;
+        ListNode dummy;
+        ListNode* tail = &dummy;
         while(l1 && l2){
             if(l1->val<l2->val){
                 tail->next = l1;
@@ -25,7 +25,7 @@ public:
         }
 
         tail->next = l1?l1:l2;
-        return dummy->next;
+        return dummy.next;
     }
     ListNode* getMid(ListNode* head){
         ListNode* slow = head;
