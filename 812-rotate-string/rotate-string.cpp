@@ -1,20 +1,21 @@
 class Solution {
 public:
-    string rotate(string s){
-        string str="";
+    void rotate(string &s){
+        char ch = s[0];
         int n = s.length();
-        str+=s[n-1];
         for(int i=0;i<n-1;i++){
-            str+=s[i];
-        }
-        return str;
+            s[i]=s[i+1];
+        } 
+        s[n-1]=ch;  
     }
     bool rotateString(string s, string goal) {
         if(s==goal) return true;
-        string temp = rotate(s);
-        while(temp!=s){
-            if(temp==goal) return true;
-            temp = rotate(temp);
+        int i=0;
+        int n = s.length();
+        while(i!=n){
+            if(s==goal) return true;
+            rotate(s);
+            i++;
         }
         return false;
     }
