@@ -11,8 +11,8 @@
 class Solution {
 public:
     void merge(vector<int>&nodes,int st,int mid,int ed){
-        vector<int>L = {nodes.begin()+st,nodes.begin()+mid+1};
-        vector<int>R = {nodes.begin()+mid+1,nodes.begin()+ed+1};
+        vector<int>L(nodes.begin()+st,nodes.begin()+mid+1);
+        vector<int>R(nodes.begin()+mid+1,nodes.begin()+ed+1);
         int i=0,j=0,k=st;
         while(i<L.size() && j<R.size()){
             if(L[i]<=R[j]){
@@ -40,6 +40,7 @@ public:
     }
 
     ListNode* sortList(ListNode* head) {
+        if(!head || !head->next) return head;
         ListNode* x = head;
         vector<int>nodes;
         while(x){
