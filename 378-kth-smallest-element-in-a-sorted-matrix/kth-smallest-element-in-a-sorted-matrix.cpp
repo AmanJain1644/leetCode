@@ -1,15 +1,15 @@
 class Solution {
 public:
     int counter(vector<vector<int>>& matrix,int mid,int n){
-        int row = n-1;
-        int col = 0;
+        int row = 0;
+        int col = n-1;
         int count = 0;
-        while(row>=0 && col<n){
+        while(row<n && col>=0){
             if(matrix[row][col]<=mid){
-                count+=row+1;
-                col++;
+                count+=col+1;
+                row++;
             }else{
-                row--;            
+                col--;         
             }
         }
         return count;
